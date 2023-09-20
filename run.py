@@ -34,4 +34,11 @@ def generate_title():
     user_input = input("Enter a number here: ")
     print(f"Your artwork title will have {user_input} words.\n")
 
+    # Check if the input is valid and turn it into an integer
+    if user_input.strip() and user_input.isdigit():
+        num_words = int(user_input)
+        print(num_words)
+    else:
+        print("Please enter a valid number")
+
 generate_title()
