@@ -16,6 +16,22 @@ SHEET = GSPREAD_CLIENT.open('python_project_database')
 artwork = SHEET.worksheet('artwork')
 
 data = artwork.get_all_values()
-string = "this is a message"
-print(string)
+test_String = "This is a test message. The program is now being executed."
+print(test_String)
 print(data)
+print()
+
+# Define the generate_title function
+def generate_title():
+    """
+    Get number of words for the artwork's title
+    """
+    print("Welcome to the artwork title generator\n")
+    print("Please enter the number of words you'd like your artwork title to have.")
+    print("It should be a number between 1 and 3.\n")
+
+    # Get user input as a string
+    user_input = input("Enter a number here: ")
+    print(f"Your artwork title will have {user_input} words.\n")
+
+generate_title()
