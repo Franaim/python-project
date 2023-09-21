@@ -1,4 +1,5 @@
 import gspread
+import random
 from google.oauth2.service_account import Credentials
 
 # Written in capitals for it is a constant variable
@@ -20,6 +21,12 @@ test_String = "This is a test message. The program is now being executed."
 print(test_String)
 print(data)
 print()
+
+# Lists of nouns and adjectives to generate the artwork title
+nouns = ["object", "painting", "sculpture", "landscape", "portrait"]
+adjectives1 = ["amazing", "beautiful", "colorful", "captivating", "inspiring"]
+adjectives2 = ["abstract", "modern", "traditional", "expressive", "unique"]
+
 
 # Function to get user input as an integer
 def get_integer_input():
