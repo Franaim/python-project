@@ -99,3 +99,13 @@ generate_title_result = generate_title()
 # Prints the result for the user
 print(generate_title_result)
 
+def string_convert(string):
+    """
+    Turns the string generated and turns it into a list of words that can be then stored
+    """
+    li = list(generate_title_result.split(" "))
+    return li
+
+print(string_convert(generate_title_result))
+
+
