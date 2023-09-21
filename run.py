@@ -56,18 +56,18 @@ def generate_string(num_words):
     """
     if num_words == 1:
         noun = random.choice(nouns)
-        noun.capitalize()
+        noun = noun.capitalize()
         artwork_title = f"{noun}"
         return artwork_title
     elif num_words == 2:
         adj1 = random.choice(adjectives1)
-        adj1.capitalize()
+        adj1 = adj1.capitalize()
         noun = random.choice(nouns)
         artwork_title = f"{adj1} {noun}"
         return artwork_title
     elif num_words == 3:
         adj1 = random.choice(adjectives1)
-        adj1.capitalize()
+        adj1 = adj1.capitalize()
         adj2 = random.choice(adjectives2)
         noun = random.choice(nouns)
         artwork_title = f"{adj1} {adj2} {noun}"
@@ -86,9 +86,12 @@ def generate_title():
 
     num_words = get_integer_input()
     if num_words == 1:
-        print(f"Your artwork title will have {num_words} word.\n")
+        print(f"Your artwork has {num_words} word:\n")
+        print(f"{generate_string(num_words)}\n")
     else:
-        print(f"Your artwork title will have {num_words} words.\n")
+        print(f"Your artwork has {num_words} words:\n")
+        print(f"{generate_string(num_words)}\n")
+
 
 # Call the generate_title function
 generate_title()
