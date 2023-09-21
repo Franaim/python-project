@@ -23,6 +23,9 @@ print()
 
 # Function to get user input as an integer
 def get_integer_input():
+    """
+    Validate the number entered in the generate_title function
+    """
     while True:
         user_input = input("Enter a number here: ")
         if user_input.strip() and user_input.isdigit():
@@ -45,8 +48,10 @@ def generate_title():
 
     # Get the number of words from the user
     num_words = get_integer_input()
-    
-    print(f"Your artwork title will have {num_words} words.\n")
+    if num_words == 1:
+        print(f"Your artwork title will have {num_words} word.\n")
+    else:
+        print(f"Your artwork title will have {num_words} words.\n")
 
 # Call the generate_title function
 generate_title()
