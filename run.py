@@ -50,7 +50,31 @@ def get_integer_input():
         else:
             print("Please enter a valid number")
 
-# Define the generate_title function
+def generate_string(num_words):
+    """
+    Based on the number entered by the user, it generates random strings from the lists of nouns and adjetives
+    """
+    if num_words == 1:
+        noun = random.choice(nouns)
+        noun.capitalize()
+        artwork_title = f"{noun}"
+        return artwork_title
+    elif num_words == 2:
+        adj1 = random.choice(adjectives1)
+        adj1.capitalize()
+        noun = random.choice(nouns)
+        artwork_title = f"{adj1} {noun}"
+        return artwork_title
+    elif num_words == 3:
+        adj1 = random.choice(adjectives1)
+        adj1.capitalize()
+        adj2 = random.choice(adjectives2)
+        noun = random.choice(nouns)
+        artwork_title = f"{adj1} {adj2} {noun}"
+        return artwork_title
+
+
+# Defines the generate_title function
 def generate_title():
     """
     Gets number of words for the artwork's title.
