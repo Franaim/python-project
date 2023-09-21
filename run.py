@@ -23,9 +23,9 @@ print(data)
 print()
 
 # Lists of nouns and adjectives to generate the artwork title
-nouns = ["object", "painting", "sculpture", "landscape", "portrait"]
-adjectives1 = ["amazing", "beautiful", "colorful", "captivating", "inspiring"]
-adjectives2 = ["abstract", "modern", "traditional", "expressive", "unique"]
+nouns = ["aurora", "object", "panorama", "elixir", "chair", "mirror", "facade", "phenomenon", "resonance", "memento", "artifact"]
+adjectives1 = ["enigmatic", "expressive", "dynamic", "political", "honest", "provocative", "real", "cruel", "truthful"]
+adjectives2 = ["ivory", "cerulean", "golden", "indigo", "unique", "Japanese", "Maltese", "Eastern", "Western", "southern", "blood-red"]
 
 
 # Function to get user input as an integer
