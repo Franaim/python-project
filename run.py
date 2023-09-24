@@ -1,6 +1,6 @@
 import gspread
-import random
 from google.oauth2.service_account import Credentials
+import random
 
 # Written in capitals for it is a constant variable
 SCOPE = [ 
@@ -33,21 +33,17 @@ def get_integer_input():
     """
     Gets the number entered by the user.
     The while loop keeps requesting a number until a valid input is entered.
-    Strip and isdigit methods check that the input exists and it's a number. Then if this is correct, it turns it
-    into an integer. Once that's done, it makes sure that the integer is not bigger than 3. If it is, it prints a 
-    message asking for a smaller number. If it's not, it returns the input and breaks the loop. If, at the beginning 
-    of the loop, the input entered isn't a number or is empty a message is printed into the console requesting a 
-    valid number.
+    It checks if the input is a valid number between 1 and 3.
     """
     while True:
         user_input = input("Enter a number here: ")
-        if user_input.strip() and user_input.isdigit():
+        try:
             user_input = int(user_input)
             if 1 <= user_input <= 3:
                 return user_input
             else:
                 print("It must be a number between 1 and 3.")
-        else:
+        except ValueError:
             print("Please enter a valid number")
 
 def generate_string(num_words):
@@ -107,14 +103,4 @@ print(generate_title_result)
 print()
 print(artwork_title)
 
-"""
-def string_convert(string):
-    """
-    Turns the string generated and turns it into a list of words that can be then stored
-    """
-    li = list(generate_title_result.split(" "))
-    return li
-
-print(string_convert(generate_title_result))
-"""
 
