@@ -35,6 +35,8 @@ def get_integer_input():
     The while loop keeps requesting a number until a valid input is entered.
     It checks if the input is a valid number between 1 and 3.
     """
+    print("Please enter the number of words you'd like your artwork title to have.")
+    print("It should be a number between 1 and 3.\n")
     while True:
         user_input = input("Enter a number here: ")
         try:
@@ -48,7 +50,7 @@ def get_integer_input():
 
 def generate_string(num_words):
     """
-    Based on the number entered by the user, it generates random strings from the lists of nouns and adjetives
+    Based on the number entered by the user, it generates random strings from the lists of nouns and adjetives. 
     """
     title_words = []
     adjectives_lists = [adjectives1, adjectives2]
@@ -58,10 +60,7 @@ def generate_string(num_words):
     title_words.append(random.choice(nouns))
     return ' '.join(title_words).capitalize()
 
-    
-print("Welcome to the artwork title generator\n")
-print("Please enter the number of words you'd like your artwork title to have.")
-print("It should be a number between 1 and 3.\n")
+
 
 def generate_title(artwork_title):
     """
@@ -89,24 +88,27 @@ def update_artwork_worksheet(data):
     print("Artwork worksheet updated\n")
 
 
-
-
-
-
 # Calls the generate_title function
-num_words = get_integer_input()
-artwork_title = generate_string(num_words)
-generate_title_result = generate_title(artwork_title)
+def main():
+    """
+    Run main program functions
+    """
+    num_words = get_integer_input()
+    artwork_title = generate_string(num_words)
+    generate_title_result = generate_title(artwork_title)
 
 
-# Prints the result for the user
-print(generate_title_result)
-print()
-print(artwork_title)
+    # Prints the result for the user
+    print(generate_title_result)
+    print()
+    print(artwork_title)
+    artwork_data = [artwork_title]
+    update_artwork_worksheet(artwork_data)
 
-artwork_data = [artwork_title]
+print("Welcome to the artwork title generator\n")
+main()
 
-update_artwork_worksheet(artwork_data)
+
 
 
 
