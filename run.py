@@ -76,6 +76,23 @@ def generate_title(artwork_title):
         message =  f"\nYour artwork has {num_words} words: '{artwork_title}'\n"
         return(message)
 
+def ask_to_save_artwork(artwork_data):
+    """
+    Asks the user if they want to save the artwork title and updates the worksheet if they choose to do so
+    """
+    while True:
+        save_artwork = input("Do you want to save this artwork title? (y/n): ").lower()
+        if save_artwork == 'y':
+            update_artwork_worksheet(artwork_data)
+            break
+        elif save_artwork == 'n':
+            print("Artwork title not saved.")
+            print("Exiting program now")
+            break
+        else:
+            print("Invalid input. Please enter 'y' to save or 'n' to not save the artwork title.")
+
+
 def update_artwork_worksheet(data):
     """
     Updates artwork worksheet, adds new row with the data generated
@@ -85,7 +102,7 @@ def update_artwork_worksheet(data):
     artwork_worksheet = SHEET.worksheet("artwork")
     artwork_worksheet.append_row(data)
 
-    print("Artwork worksheet updated\n")
+    print("Artwork title saved successfully.\n")
 
 
 # Calls the generate_title function
@@ -102,8 +119,13 @@ def main():
     print(generate_title_result)
     print()
     print(artwork_title)
+
+    # Turns the data into a list so it can be added to the worksheet
     artwork_data = [artwork_title]
-    update_artwork_worksheet(artwork_data)
+
+
+    ask_to_save_artwork(artwork_data)
+
 
 print("Welcome to the artwork title generator\n")
 main()
