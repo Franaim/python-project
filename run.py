@@ -33,7 +33,7 @@ def get_integer_input():
     """
     Gets the number entered by the user.
     The while loop keeps requesting a number until a valid input is entered.
-    It checks if the input is a valid number between 1 and 3.
+    It checks if the input is a valid number between 1 and 3 and prints an error if it's not.
     """
     print("Please enter the number of words you'd like your artwork title to have.")
     print("It should be a number between 1 and 3.\n")
@@ -78,7 +78,7 @@ def generate_title(artwork_title):
 
 def ask_to_save_artwork(artwork_data):
     """
-    Asks the user if they want to save the artwork title and updates the worksheet if they choose to do so
+    Asks the user if they want to save the artwork title and updates the worksheet if they choose to do so.
     """
     while True:
         save_artwork = input("Do you want to save this artwork title? (y/n): ").lower()
@@ -95,7 +95,7 @@ def ask_to_save_artwork(artwork_data):
 
 def update_artwork_worksheet(data):
     """
-    Updates artwork worksheet, adds new row with the data generated
+    Updates artwork worksheet, adds new row with the data generated.
     """
     print("Updating artwork worksheet...\n")
     
@@ -108,7 +108,7 @@ def update_artwork_worksheet(data):
 # Calls the generate_title function
 def main():
     """
-    Run main program functions
+    Run main program functions.
     """
     num_words = get_integer_input()
     artwork_title = generate_string(num_words)
