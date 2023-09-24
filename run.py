@@ -57,24 +57,7 @@ def generate_string(num_words):
         title_words.append(random.choice(adjectives_lists.pop()))
     title_words.append(random.choice(nouns))
     return ' '.join(title_words).capitalize()
-    
-"""
-    if num_words == 1:
-        return random.choice(nouns)
-    elif num_words == 2:
-        adj1 = random.choice(adjectives1)
-        adj1 = adj1.capitalize()
-        noun = random.choice(nouns)
-        artwork_title = f"{adj1} {noun}"
-        return artwork_title
-    elif num_words == 3:
-        adj1 = random.choice(adjectives1)
-        adj1 = adj1.capitalize()
-        adj2 = random.choice(adjectives2)
-        noun = random.choice(nouns)
-        artwork_title = f"{adj1} {adj2} {noun}"
-        return artwork_title
-    """
+
     
 print("Welcome to the artwork title generator\n")
 print("Please enter the number of words you'd like your artwork title to have.")
@@ -94,13 +77,36 @@ def generate_title(artwork_title):
         message =  f"\nYour artwork has {num_words} words: '{artwork_title}'\n"
         return(message)
 
+def update_artwork_worksheet(data):
+    """
+    Updates artwork worksheet, adds new row with the data generated
+    """
+    print("Updating artwork worksheet...\n")
+    
+    artwork_worksheet = SHEET.worksheet("artwork")
+    artwork_worksheet.append_row(data)
+
+    print("Artwork worksheet updated\n")
+
+
+
+
+
+
 # Calls the generate_title function
-artwork_title = generate_string(get_integer_input())
+num_words = get_integer_input()
+artwork_title = generate_string(num_words)
 generate_title_result = generate_title(artwork_title)
+
 
 # Prints the result for the user
 print(generate_title_result)
 print()
 print(artwork_title)
+
+artwork_data = [artwork_title]
+
+update_artwork_worksheet(artwork_data)
+
 
 
