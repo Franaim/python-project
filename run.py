@@ -15,12 +15,8 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('python_project_database')
 
 artwork = SHEET.worksheet('artwork')
-
 data = artwork.get_all_values()
-test_String = "This is a test message. The program is now being executed."
-print(test_String)
-print(data)
-print()
+
 
 # Lists of nouns and adjectives to generate the artwork title
 nouns = ["aurora", "object", "panorama", "elixir", "chair", "mirror", "facade", "phenomenon", "resonance", "memento", "artifact"]
