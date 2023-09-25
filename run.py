@@ -122,18 +122,19 @@ def search_word_in_database(data):
     """
     Searches for a word in the artwork titles database and provides information about its frequency.
     """
-    word_to_search = input("Enter a word to search in the database:\n").lower()
-    word_count = sum(1 for row in data if word_to_search in row[0].lower())
-    
-    if word_count > 0:
-        print(f"The word '{word_to_search}' appears {word_count} times in the database.")
-    else:
-        print(f"The word '{word_to_search}' is not in the database.")
-    
-    another_search = input("Would you like to search for another word? (y/n):\n").lower()
-    
-    if another_search != 'y':
-        break
+    while True:
+        word_to_search = input("Enter a word to search in the database:\n").lower()
+        word_count = sum(1 for row in data if word_to_search in row[0].lower())
+
+        if word_count > 0:
+            print(f"The word '{word_to_search}' appears {word_count} times in the database.")
+        else:
+            print(f"The word '{word_to_search}' is not in the database.")
+
+        another_search = input("Would you like to search for another word? (y/n):\n").lower()
+
+        if another_search != 'y':
+            break
 
 def main_menu():
     """
@@ -193,11 +194,11 @@ def generate():
     ask_to_save_artwork(artwork_data)
 
     while True:
-            choice = input("1. Generate another title\n2. Go to Main Menu\nEnter your choice (1/2):\n")
-            if choice == '1':
-                break
-            elif choice == '2':
-                return
+        choice = input("1. Generate another title\n2. Go to Main Menu\nEnter your choice (1/2):\n")
+        if choice == '1':
+            break
+        elif choice == '2':
+            return
 
 
 def main():
