@@ -183,7 +183,7 @@ def generate():
         # Turns the data into a list so it can be added to the worksheet
         artwork_data = [artwork_title]
 
-        While True:
+        while True:
             ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
             if ask_to_save == 'y':
                 update_artwork_worksheet(artwork_data)
