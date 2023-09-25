@@ -175,9 +175,9 @@ def database_menu():
 
 
 # Calls the generate_title function
-def main():
+def generate():
     """
-    Run main program functions.
+    Run functions related to artwork title generation
     """
     num_words = get_integer_input()
     artwork_title = generate_string(num_words)
@@ -195,14 +195,21 @@ def main():
 
     ask_to_save_artwork(artwork_data)
 
+def main():
+    """
+    Run the program's main function
+    """
+    main_menu()
 
-print("Welcome to the artwork title generator\n")
-consult_artwork_database()
+
+
+
 while True:
     if not search_word_in_database(data):
         print("Exiting the word search.")
         break
 main()
+
 
 
 
