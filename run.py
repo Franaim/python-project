@@ -120,9 +120,9 @@ def search_word_in_database(data):
         word_count = sum(1 for row in data if word_to_search in row[0].lower())
 
         if word_count > 0:
-            print(f"The word '{word_to_search}' appears {word_count} times in the database.")
+            print(f"\nThe word '{word_to_search}' appears {word_count} times in the database.\n")
         else:
-            print(f"The word '{word_to_search}' is not in the database.")
+            print(f"\nThe word '{word_to_search}' is not in the database.\n")
 
         another_search = input("Would you like to search for another word? (y/n):\n").lower()
 
