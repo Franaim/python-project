@@ -80,9 +80,13 @@ def update_artwork_worksheet(data):
     print("Updating artwork titles database...\n")
     
     artwork_worksheet = SHEET.worksheet("artwork")
-    artwork_worksheet.append_row(data)
 
-    print("Artwork title saved successfully.\n")
+    try:
+        artwork_worksheet.append_row(data)
+        print("Artwork title saved successfully.\n")
+    except Exception as e: # This catches any exception that inherits from the base Exception class
+        print(f"An error occurred while saving the artwork title: {e}\n")
+
 
 def consult_artwork_database():
     """
