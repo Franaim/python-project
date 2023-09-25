@@ -121,7 +121,6 @@ def consult_artwork_database():
 def search_word_in_database(data):
     """
     Searches for a word in the artwork titles database and provides information about its frequency.
-
     """
     word_to_search = input("Enter a word to search in the database:\n").lower()
     word_count = sum(1 for row in data if word_to_search in row[0].lower())
@@ -135,6 +134,28 @@ def search_word_in_database(data):
     
     return another_search == 'y'
 
+def main_menu():
+    """
+    Menu to introduce the program and its functions to the user
+    """
+    print("Welcome to the Artwork Title Generator\n")
+    print("With it, you can:")
+    print("1. Consult our artwork titles database")
+    print("2. Generate new artwork titles and add them to our database")
+    
+    while True:
+        choice = input("Enter your choice (1/2):\n")
+        if choice == '1':
+            database_menu()
+        elif choice == '2':
+            generate_artwork()
+        else:
+            print("Invalid choice. Please enter '1' or '2'.")
+
+def database_menu():
+    """
+    Menu for functions related to consulting the database
+    """
 
 
 
