@@ -66,10 +66,10 @@ def generate_title(artwork_title):
     """
     num_words = len(artwork_title.split(" "))
     if num_words == 1:
-        message = f"\nYour artwork has {num_words} word: '{artwork_title}'\n"
+        message = f"\nYour artwork title has {num_words} word: '{artwork_title}'\n"
         return(message)
     else:
-        message =  f"\nYour artwork has {num_words} words: '{artwork_title}'\n"
+        message =  f"\nYour artwork title has {num_words} words: '{artwork_title}'\n"
         return(message)
 
 
