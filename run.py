@@ -3,7 +3,6 @@ from google.oauth2.service_account import Credentials
 import random
 from title_generator import generate_string # Imported function from external file
 
-
 # Written in capitals for it is a constant variable
 SCOPE = [ 
     "https://www.googleapis.com/auth/spreadsheets",
@@ -18,6 +17,7 @@ SHEET = GSPREAD_CLIENT.open('python_project_database')
 
 artwork = SHEET.worksheet('artwork')
 data = artwork.get_all_values()
+
 
 def get_integer_input():
     """
@@ -39,7 +39,6 @@ def get_integer_input():
                 print("\nIt must be a number between 1 and 3.")
         except ValueError: # If the user enters something that can't be converted to an integer it catches the error
             print("\nPlease enter a valid number")
-
 
 
 def generate_title(artwork_title):
@@ -102,6 +101,7 @@ def consult_artwork_database():
         else:
             print("Invalid choice. Please enter '1' or '2'.")
 
+
 def search_word_in_database(data):
     """
     Searches for a word in the artwork titles database and provides information about its frequency.
@@ -115,7 +115,6 @@ def search_word_in_database(data):
             print("----------------------------------------------")
             print(f"\nThe word '{word_to_search}' appears {word_count} times in the database.\n")
             print("----------------------------------------------")
-
         else:
             print("----------------------------------------------")
             print(f"\nThe word '{word_to_search}' is not in the database.\n")
@@ -125,6 +124,7 @@ def search_word_in_database(data):
 
         if another_search != 'y':
             break
+
 
 def main_menu():
     """
@@ -143,6 +143,7 @@ def main_menu():
             generate()
         else:
             print("Invalid choice. Please enter '1' or '2'.")
+
 
 def database_menu():
     """
@@ -193,8 +194,6 @@ def generate():
                 break # Exits without saving
             else:
                 print("Invalid choice. Please enter 'y' or 'n'.")
-        
-
         ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if ask_to_generate_again == '1':
             continue
@@ -210,9 +209,6 @@ def main():
     """
     main_menu()
 
+
 if __name__ == '__main__':
     main()
-
-
-
-
