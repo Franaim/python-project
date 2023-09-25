@@ -72,22 +72,6 @@ def generate_title(artwork_title):
         message =  f"\nYour artwork has {num_words} words: '{artwork_title}'\n"
         return(message)
 
-def ask_to_save_artwork(artwork_data):
-    """
-    Asks the user if they want to save the artwork title and updates the worksheet if they choose to do so.
-    """
-    while True:
-        save_artwork = input("Do you want to save this artwork title? (y/n):\n").lower()
-        if save_artwork == 'y':
-            update_artwork_worksheet(artwork_data)
-            break
-        elif save_artwork == 'n':
-            print("Artwork title not saved.")
-            print("Exiting program now")
-            break
-        else:
-            print("Invalid input. Please enter 'y' to save or 'n' to not save the artwork title.")
-
 
 def update_artwork_worksheet(data):
     """
@@ -119,7 +103,7 @@ def consult_artwork_database():
         print()
 
     while True:
-        choice = input("1. Go back\n2. Go to Main Menu\nEnter your choice (1/2):\n")
+        choice = input("1. Go back to database options\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if choice == '1':
             return
         elif choice == '2':
@@ -151,11 +135,9 @@ def main_menu():
     """
     print("\nWelcome to the Artwork Title Generator\n")
     print("With it, you can:")
-    print("1. Consult our artwork titles database")
-    print("2. Generate new artwork titles and add them to our database")
     
     while True:
-        choice = input("Enter your choice (1/2):\n")
+        choice = input("1. Consult our artwork titles database\n2. Generate artwork titles and add them to our database\n\nEnter your choice (1/2):\n")
         if choice == '1':
             database_menu()
         elif choice == '2':
@@ -168,15 +150,15 @@ def database_menu():
     Menu for functions related to consulting the database
     """
     print("\nArtwork Database Menu\n")
-    print("1. Consult artwork titles in the database")
-    print("2. Search for a word in the database")
 
     while True:
-        choice = input("Enter your choice (1/2):\n")
+        choice = input("1. See list of artwork titles in database\n2. Search for a word in the database\n3. Go back to Main Menu\n\nEnter your choice (1/2/3):\n")
         if choice == '1':
             consult_artwork_database()
         elif choice == '2':
             search_word_in_database(data)
+        elif choice == '3':
+            return main_menu()
         else:
             print("Invalid choice. Please enter '1' or '2'.")
 
@@ -187,23 +169,34 @@ def generate():
     """
     Run functions related to artwork title generation
     """
-    num_words = get_integer_input()
-    artwork_title = generate_string(num_words)
-    generate_title_result = generate_title(artwork_title)
+    while True:
+        num_words = get_integer_input()
+        artwork_title = generate_string(num_words)
+        generate_title_result = generate_title(artwork_title)
 
 
-    # Prints the result for the user
-    print(generate_title_result)
-    print()
-    print(artwork_title)
+        # Prints the result for the user
+        print(generate_title_result)
+        print()
 
-    # Turns the data into a list so it can be added to the worksheet
-    artwork_data = [artwork_title]
+        # Turns the data into a list so it can be added to the worksheet
+        artwork_data = [artwork_title]
 
-    ask_to_save_artwork(artwork_data)
+        ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
+        if ask_to_save == 'y':
+            update_artwork_worksheet(artwork_data)
+            print("Artwork title saved successfully.\n")
+
+        ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
+        if ask_to_generate_again == '1':
+            continue
+        elif ask_to_generate_again == '2':
+            break
+        else:
+            print("Invalid choice. Please enter '1' or '2'.")
 
     while True:
-        choice = input("1. Generate another title\n2. Go to Main Menu\nEnter your choice (1/2):\n")
+        choice = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if choice == '1':
             break
         elif choice == '2':
