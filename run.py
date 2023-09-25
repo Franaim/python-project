@@ -100,7 +100,7 @@ def update_artwork_worksheet(data):
 
     print("Artwork title saved successfully.\n")
 
-def consult_artwork_titles():
+def consult_artwork_database():
     """
     Gets and prints the list of artwork titles from the worksheet.
     If there's no data found, it prints a message accordingly. If there is, it prints the title with its index.
@@ -117,6 +117,23 @@ def consult_artwork_titles():
         for i, row in enumerate(data[1:], start=1):
             print(f"{i}. {row[0]}")
         print()
+
+def search_word_in_database(data):
+
+    word_to_search = input("Enter a word to search in the database:\n").lower()
+    word_count = sum(1 for row in data if word_to_search in row[0].lower())
+    
+    if word_count > 0:
+        print(f"The word '{word_to_search}' appears {word_count} times in the database.")
+    else:
+        print(f"The word '{word_to_search}' is not in the database.")
+    
+    another_search = input("Would you like to search for another word? (y/n):\n").lower()
+    
+    return another_search == 'y'
+
+
+
 
 
 # Calls the generate_title function
@@ -142,7 +159,11 @@ def main():
 
 
 print("Welcome to the artwork title generator\n")
-consult_artwork_titles()
+consult_artwork_database()
+while True:
+    if not search_word_in_database(data):
+        print("Exiting the word search.")
+        break
 main()
 
 
