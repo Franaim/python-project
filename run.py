@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
+from title_generator import generate_string
+
 
 # Written in capitals for it is a constant variable
 SCOPE = [ 
@@ -16,13 +18,6 @@ SHEET = GSPREAD_CLIENT.open('python_project_database')
 
 artwork = SHEET.worksheet('artwork')
 data = artwork.get_all_values()
-
-
-# Lists of nouns and adjectives to generate the artwork title
-nouns = ["aurora", "object", "panorama", "elixir", "chair", "mirror", "facade", "phenomenon", "resonance", "memento", "artifact"]
-adjectives1 = ["enigmatic", "expressive", "dynamic", "political", "honest", "provocative", "real", "cruel", "truthful", "world's"]
-adjectives2 = ["ivory", "cerulean", "golden", "indigo", "unique", "Japanese", "Maltese", "Eastern", "Western", "southern", "blood-red", "dystopian"]
-
 
 # Function to get user input as an integer
 def get_integer_input():
@@ -43,18 +38,6 @@ def get_integer_input():
                 print("It must be a number between 1 and 3.")
         except ValueError:
             print("Please enter a valid number")
-
-def generate_string(num_words):
-    """
-    Based on the number entered by the user, it generates random strings from the lists of nouns and adjetives. 
-    """
-    title_words = []
-    adjectives_lists = [adjectives1, adjectives2]
-    number_of_adjectives = num_words - 1
-    for n in range(number_of_adjectives):
-        title_words.append(random.choice(adjectives_lists.pop()))
-    title_words.append(random.choice(nouns))
-    return ' '.join(title_words).capitalize()
 
 
 
