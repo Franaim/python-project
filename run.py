@@ -185,7 +185,8 @@ def generate():
         ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
         if ask_to_save == 'y':
             update_artwork_worksheet(artwork_data)
-            print("Artwork title saved successfully.\n")
+        elif ask_to_save == 'n':
+            print("Title not saved")
 
         ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if ask_to_generate_again == '1':
@@ -194,13 +195,6 @@ def generate():
             break
         else:
             print("Invalid choice. Please enter '1' or '2'.")
-
-    while True:
-        choice = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
-        if choice == '1':
-            break
-        elif choice == '2':
-            return
 
 
 def main():
