@@ -33,6 +33,7 @@ def get_integer_input():
         try:
             user_input = int(user_input)
             if 1 <= user_input <= 3:
+                print("Generating title...")
                 return user_input
             else:
                 print("\nIt must be a number between 1 and 3.")
@@ -187,6 +188,9 @@ def generate():
             update_artwork_worksheet(artwork_data)
         elif ask_to_save == 'n':
             print("Title not saved")
+        else:
+            print("Invalid choice. Please enter 'y' or 'n'.")
+        
 
         ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if ask_to_generate_again == '1':
