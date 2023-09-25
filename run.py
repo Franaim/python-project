@@ -103,17 +103,18 @@ def update_artwork_worksheet(data):
 def consult_artwork_titles():
     """
     Gets and prints the list of artwork titles from the worksheet.
+    If there's no data found, it prints a message accordingly. If there is, it prints 
     """
     print("Consulting the database for artwork titles...\n")
     
     artwork_worksheet = SHEET.worksheet("artwork")
-    data = artwork_worksheet.get_all_values()
+    database = artwork_worksheet.get_all_values()
 
-    if not data:
+    if not database:
         print("No artwork titles found in the database.")
     else:
         print("Artwork titles in the database:")
-        for i, row in enumerate(data, start=1):
+        for i, row in enumerate(database, start=1):
             print(f"{i}. {row[0]}")
 
 
