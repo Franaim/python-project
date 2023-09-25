@@ -132,7 +132,8 @@ def search_word_in_database(data):
     
     another_search = input("Would you like to search for another word? (y/n):\n").lower()
     
-    return another_search == 'y'
+    if another_search != 'y':
+        break
 
 def main_menu():
     """
