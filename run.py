@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
-from title_generator import generate_string
+from title_generator import generate_string # Imported function from external file
 
 
 # Written in capitals for it is a constant variable
@@ -19,12 +19,11 @@ SHEET = GSPREAD_CLIENT.open('python_project_database')
 artwork = SHEET.worksheet('artwork')
 data = artwork.get_all_values()
 
-# Function to get user input as an integer
 def get_integer_input():
     """
     Gets the number entered by the user.
-    The while loop keeps requesting a number until a valid input is entered.
-    It checks if the input is a valid number between 1 and 3 and prints an error if it's not.
+    The while loop keeps requesting a number until a valid input is entered and prints an error if it's not.
+    It checks if the input is a valid number between 1 and 3 and prints a message if it's not.
     """
     print("\nPlease enter the number of words you'd like your artwork title to have.")
     print("It should be a number between 1 and 3.\n")
@@ -36,23 +35,22 @@ def get_integer_input():
                 return user_input
             else:
                 print("It must be a number between 1 and 3.")
-        except ValueError:
+        except ValueError: # If the user enters something that can't be converted to an integer it catches the error
             print("Please enter a valid number")
 
 
 
 def generate_title(artwork_title):
     """
-    Once the user has entered a number and, based on it, a string has been made randomly, it prints a message
-    including the artwork title that has been generated. In this case, it checks if the number entered is 1
-    or if it's 2 or 3 so that the word 'word' isn't plural when referring to 1. 
+    Prints a message including the artwork title that has been generated.
+    It checks if the number entered was 1 or more so that a clear message about the amount of words is included.
     """
-    num_words = len(artwork_title.split(" "))
+    num_words = len(artwork_title.split(" ")) # First it splits the title separated by spaces into a list of words and then counts the amount of words in it
     if num_words == 1:
         message = f"\nArtwork title: '{artwork_title}' (1 word)\n"
         return(message)
     else:
-        message =  f"\nArtwork title: '{artwork_title}' ({num_words} words)\n"
+        message =  f"\nArtwork title: '{artwork_title}' ({num_words} words)\n" # If the title has more than one word, it includes the count of words in the formated string
         return(message)
 
 
@@ -78,18 +76,18 @@ def consult_artwork_database():
     """
     print("Consulting the database for artwork titles...\n")
     
-    artwork_worksheet = SHEET.worksheet("artwork")
-    data = artwork_worksheet.get_all_values()
+    artwork_worksheet = SHEET.worksheet("artwork") # This accesses the worksheet and stores it in a variable
+    data = artwork_worksheet.get_all_values() # This gets the values in the worksheet and stores them in another variable
 
-    if not data:
+    if not data: # In case the database is empty, a message is printed for the user
         print("No artwork titles found in the database.")
     else:
         print("Artwork titles in the database:\n")
-        for i, row in enumerate(data[1:], start=1):
-            print(f"{i}. {row[0]}")
-        print()
+        for i, row in enumerate(data[1:], start=1): # The loop iterates over the rows of data, starting from the second row because the first one is a header row. Then it assigns an index to each row starting from 1.
+            print(f"{i}. {row[0]}") # A formated string idicating the index number and the title in the database
+        print() # Spacing
 
-    while True:
+    while True: # After the list has been printed, a new set of options appear for the user
         choice = input("1. Go back to database options\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if choice == '1':
             return
@@ -104,7 +102,7 @@ def search_word_in_database(data):
     """
     while True:
         word_to_search = input("Enter a word to search in the database:\n").lower()
-        word_count = sum(1 for row in data if word_to_search in row[0].lower())
+        word_count = sum(1 for row in data if word_to_search in row[0].lower()) # This counts the number of rows where the entered word is found. It applies only to the first column
 
         if word_count > 0:
             print(f"\nThe word '{word_to_search}' appears {word_count} times in the database.\n")
@@ -150,8 +148,6 @@ def database_menu():
             print("Invalid choice. Please enter '1' or '2'.")
 
 
-
-# Calls the generate_title function
 def generate():
     """
     Run functions related to artwork title generation
