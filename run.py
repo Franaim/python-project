@@ -92,9 +92,9 @@ def consult_artwork_database():
     print("Consulting the database for artwork titles...\n")
     
     artwork_worksheet = SHEET.worksheet("artwork")
-    database = artwork_worksheet.get_all_values()
+    data = artwork_worksheet.get_all_values()
 
-    if not database:
+    if not data:
         print("No artwork titles found in the database.")
     else:
         print("Artwork titles in the database:\n")
