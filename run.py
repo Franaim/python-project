@@ -120,10 +120,14 @@ def search_word_in_database(data):
             print(f"\nThe word '{word_to_search}' is not in the database.\n")
             print("----------------------------------------------")
 
-        another_search = input("\nWould you like to search for another word? (y/n):\n").lower()
-
-        if another_search != 'y':
-            break
+        while True:
+            another_search = input("\nWould you like to search for another word? (y/n):\n").lower()
+            if another_search == 'y':
+                break
+            elif another_search == 'n':
+                return  # Exit the search function
+            else:
+                print("Invalid choice. Please enter 'y' or 'n'.")
 
 
 def main_menu():

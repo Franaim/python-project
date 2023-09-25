@@ -1,31 +1,93 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# ARTWORK TITLE GENERATOR
+---
 
-Welcome USER_NAME,
+The "Artwork Title Generator" is a Python terminal program designed to enhance the creative process for contemporary artists and creators by leveraging the power of programming.
+It enables users to generate, manage, and consult titles for contemporary works of art. It uses Google Sheets as a data storage solution and integrates external functionality for title generation.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+[Here is the live version of my project](https://artwork-title-generator-b1c0129c3591.herokuapp.com/)
 
-## Reminders
+![Artwork Title Generator Responsiveness](https://iili.io/JJkCoEx.jpg)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+## How to use it
 
-## Creating the Heroku app
+At the start of the program the user is given a brief description of what the program can do and must choose (by entering 1 or 2) whether they want to do:
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+1. Perform query tasks on a database.
+2. Generate data which can then be included in the database.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+### Query tasks on database
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+In case of entering 1, the user will again have to choose between three new options:
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+1. View the list of data generated with the programme and saved in the database.
+This option will use an API connected to the pyhton program to get and print on the terminal an indexed list of all the artwork titles that other users have generated and saved in the external worksheet.
 
-Connect your GitHub repository and deploy as normal.
+2. Query the frequency of a particular word within this database.
+This option will allow the user to type in a particular word and receive a corresponding response, either if that word is not found in the database or, if it is, how many times in total.
 
-## Constraints
+3. Back to previous menu.
+This option will take the user to the previous menu, enabling other options.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+### Generating data and storing it
 
------
-Happy coding!
+If, from the main menu, the user selected option 2, then they will enter the section for generating titles for works of art.
+There the user will be asked for a number of words to form the title and, if the answer is a number between 1 and 3, then the programme will generate a title, always including a noun and one or two adjectives.
+
+Once the title has been generated, the user can choose whether to save it in the database or not, and can choose whether to continue generating new titles or return to the main menu.
+
+## Features
+
+1. Title Generation:
+
+- Users can generate artwork titles of varying lengths (between 1 and 3 words) using a custom algorithm that combines words and phrases from predefined lists.
+- Generated titles are displayed to the user along with the word count.
+
+2. Database Management:
+
+- Users can save generated artwork titles to the Google Sheets-based database.
+- The program appends new titles as rows in the "artwork" worksheet.
+
+3. Consult Artwork Database:
+
+- Users can access and view the list of artwork titles stored in the database.
+- Titles are presented with an index number for reference.
+
+4. Search in Database:
+
+- Users can search for specific words in the artwork titles database.
+- The program counts and displays the frequency of the searched word's occurrence.
+
+5. Data Validation:
+
+- The program validates user inputs to ensure that they are within the specified range and format. For example, it checks that the user's choice is either '1' or '2' and that the word count for title generation is between 1 and 3.
+
+6. Menu System:
+
+- The program utilizes a menu-driven system to guide users through different functionalities.
+- It offers a main menu and a database menu for easy navigation.
+
+7. Error Handling:
+
+- The program incorporates error handling to address potential exceptions that may occur during operations, such as database updates.
+
+8. Integration with External Libraries:
+
+- The program integrates external libraries, including gspread for Google Sheets interaction and the generate_string function from an external file for title generation.
+
+9. User-Friendly Interface and Interaction via Terminal
+
+- The program provides clear and informative messages to guide users through various operations.
+- It continuously prompts for user input until valid choices are made.
+
+10. Persistence:
+
+- The program ensures data persistence by saving generated titles to the Google Sheets database, allowing users to access their titles even after closing the program.
+
+## Data Model
+
+The most critical aspect of the data model in the "Artwork Title Generator" project is its utilization of Google Sheets as the central repository for storing and managing generated artwork titles. This choice of data storage not only offers structured organization but also ensures data persistence. Titles are stored as rows within a dedicated worksheet, making it easy for users to access, search, and maintain their collection of titles over time.
+
+
+
+
+
