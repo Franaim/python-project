@@ -1,10 +1,11 @@
 import gspread
 from google.oauth2.service_account import Credentials
 import random
-from title_generator import generate_string # Imported function from external file
+# Imported function from external file
+from title_generator import generate_string
 
 # Written in capitals for it is a constant variable
-SCOPE = [ 
+SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
@@ -37,7 +38,8 @@ def get_integer_input():
                 return user_input
             else:
                 print("\nIt must be a number between 1 and 3.")
-        except ValueError: # If the user enters something that can't be converted to an integer it catches the error
+        except ValueError:
+            # If the user enters something that can't be converted to an integer it catches the error
             print("\nPlease enter a valid number")
 
 
@@ -46,13 +48,15 @@ def generate_title(artwork_title):
     Prints a message including the artwork title that has been generated.
     It checks if the number entered was 1 or more so that a clear message about the amount of words is included.
     """
-    num_words = len(artwork_title.split(" ")) # First it splits the title separated by spaces into a list of words and then counts the amount of words in it
+    # First it splits the title separated by spaces into a list of words and then counts the amount of words in it
+    num_words = len(artwork_title.split(" "))
     if num_words == 1:
         message = f"\nArtwork title: '{artwork_title}' (1 word)\n"
-        return(message)
+        return message
     else:
-        message =  f"\nArtwork title: '{artwork_title}' ({num_words} words)\n" # If the title has more than one word, it includes the count of words in the formated string
-        return(message)
+        # If the title has more than one word, it includes the count of words in the formated string
+        message = f"\nArtwork title: '{artwork_title}' ({num_words} words)\n"
+        return message
 
 
 def update_artwork_worksheet(data):
@@ -60,14 +64,15 @@ def update_artwork_worksheet(data):
     Updates artwork worksheet, adds new row with the data generated. Once done, it prints a message accordingly.
     """
     print("Updating artwork titles database...\n")
-    
+
     artwork_worksheet = SHEET.worksheet("artwork")
 
     try:
         artwork_worksheet.append_row(data)
         print("Artwork title saved successfully.\n")
         print("----------------------------------------------")
-    except Exception as e: # This catches any exception that inherits from the base Exception class
+    # This catches any exception that inherits from the base Exception class
+    except Exception as e:
         print(f"An error occurred while saving the artwork title: {e}\n")
         print("----------------------------------------------")
 
@@ -78,21 +83,26 @@ def consult_artwork_database():
     If there's no data found, it prints a message accordingly. If there is, it prints the title with its index.
     """
     print("Consulting the database for artwork titles...\n")
-    
-    artwork_worksheet = SHEET.worksheet("artwork") # This accesses the worksheet and stores it in a variable
-    data = artwork_worksheet.get_all_values() # This gets the values in the worksheet and stores them in another variable
+    # This accesses the worksheet and stores it in a variable
+    artwork_worksheet = SHEET.worksheet("artwork")
+    # This gets the values in the worksheet and stores them in another variable
+    data = artwork_worksheet.get_all_values()
 
-    if not data: # In case the database is empty, a message is printed for the user
+    # In case the database is empty, a message is printed for the user
+    if not data:
         print("No artwork titles found in the database.")
     else:
         print("----------------------------------------------")
         print("Artwork titles in database:\n")
-        for i, row in enumerate(data[1:], start=1): # The loop iterates over the rows of data, starting from the second row because the first one is a header row. Then it assigns an index to each row starting from 1.
-            print(f"{i}. {row[0]}") # A formated string idicating the index number and the title in the database
-        print() # Spacing
+        # The loop iterates over the rows of data starting from the second row. The first one is a header row. It assigns an index to each row.
+        for i, row in enumerate(data[1:], start=1):
+            # A formated string idicating the index number and the title in the database
+            print(f"{i}. {row[0]}")
+        print()
         print("----------------------------------------------")
 
-    while True: # After the list has been printed, a new set of options appear for the user
+    # After the list has been printed, a new set of options appear for the user
+    while True:
         choice = input("\n1. Go back to database options\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
         if choice == '1':
             return
@@ -109,7 +119,8 @@ def search_word_in_database(data):
     print("----------------------------------------------")
     while True:
         word_to_search = input("\nEnter a word to search in the database:\n").lower()
-        word_count = sum(1 for row in data if word_to_search in row[0].lower()) # This counts the number of rows where the entered word is found. It applies only to the first column
+        # This counts the number of rows where the entered word is found. It applies only to the first column
+        word_count = sum(1 for row in data if word_to_search in row[0].lower())
 
         if word_count > 0:
             print("----------------------------------------------")
@@ -125,7 +136,8 @@ def search_word_in_database(data):
             if another_search == 'y':
                 break
             elif another_search == 'n':
-                return  # Exit the search function
+                # Exit the search function
+                return
             else:
                 print("Invalid choice. Please enter 'y' or 'n'.")
 
@@ -138,7 +150,7 @@ def main_menu():
     print("\nWelcome to the Artwork Title Generator\n")
     print("----------------------------------------------")
     print("With it, you can:\n")
-    
+
     while True:
         choice = input("1. Consult our artwork titles database\n2. Generate artwork titles and add them to our database\n\nEnter your choice (1/2):\n")
         if choice == '1':
@@ -178,7 +190,6 @@ def generate():
         artwork_title = generate_string(num_words)
         generate_title_result = generate_title(artwork_title)
 
-
         # Prints the result for the user
         print("----------------------------------------------")
         print(generate_title_result)
@@ -192,10 +203,12 @@ def generate():
             ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
             if ask_to_save == 'y':
                 update_artwork_worksheet(artwork_data)
-                break # Exits after saving
+                # Exits after saving
+                break
             elif ask_to_save == 'n':
                 print("Title not saved\n")
-                break # Exits without saving
+                # Exits without saving
+                break
             else:
                 print("Invalid choice. Please enter 'y' or 'n'.")
         ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
@@ -216,3 +229,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+        
