@@ -118,6 +118,15 @@ def consult_artwork_database():
             print(f"{i}. {row[0]}")
         print()
 
+    while True:
+        choice = input("1. Go back\n2. Go to Main Menu\nEnter your choice (1/2):\n")
+        if choice == '1':
+            return
+        elif choice == '2':
+            return main_menu()
+        else:
+            print("Invalid choice. Please enter '1' or '2'.")
+
 def search_word_in_database(data):
     """
     Searches for a word in the artwork titles database and provides information about its frequency.
