@@ -119,7 +119,10 @@ def consult_artwork_database():
         print()
 
 def search_word_in_database(data):
+    """
+    Searches for a word in the artwork titles database and provides information about its frequency.
 
+    """
     word_to_search = input("Enter a word to search in the database:\n").lower()
     word_count = sum(1 for row in data if word_to_search in row[0].lower())
     
