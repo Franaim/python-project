@@ -118,6 +118,7 @@ def main_menu():
     """
     Menu to introduce the program and its functions to the user
     """
+    print("----------------------------------------------")
     print("\nWelcome to the Artwork Title Generator\n")
     print("With it, you can:")
     
