@@ -138,7 +138,7 @@ def main_menu():
     """
     Menu to introduce the program and its functions to the user
     """
-    print("Welcome to the Artwork Title Generator\n")
+    print("\nWelcome to the Artwork Title Generator\n")
     print("With it, you can:")
     print("1. Consult our artwork titles database")
     print("2. Generate new artwork titles and add them to our database")
@@ -156,6 +156,20 @@ def database_menu():
     """
     Menu for functions related to consulting the database
     """
+    print("\nArtwork Database Menu:\n")
+    print("1. Consult artwork titles in the database")
+    print("2. Search for a word in the database")
+
+      while True:
+        choice = input("Enter your choice (1/2):\n")
+        if choice == '1':
+            consult_artwork_database()
+        elif choice == '2':
+            search_word_in_database(data)
+        else:
+            print("Invalid choice. Please enter '1' or '2'.")
+
+
 
 
 
