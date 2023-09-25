@@ -183,13 +183,16 @@ def generate():
         # Turns the data into a list so it can be added to the worksheet
         artwork_data = [artwork_title]
 
-        ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
-        if ask_to_save == 'y':
-            update_artwork_worksheet(artwork_data)
-        elif ask_to_save == 'n':
-            print("Title not saved")
-        else:
-            print("Invalid choice. Please enter 'y' or 'n'.")
+        While True:
+            ask_to_save = input("Do you want to save this artwork title? (y/n):\n").lower()
+            if ask_to_save == 'y':
+                update_artwork_worksheet(artwork_data)
+                break # Exits after saving
+            elif ask_to_save == 'n':
+                print("Title not saved")
+                break # Exits without saving
+            else:
+                print("Invalid choice. Please enter 'y' or 'n'.")
         
 
         ask_to_generate_again = input("1. Generate another title\n2. Go to Main Menu\n\nEnter your choice (1/2):\n")
