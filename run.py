@@ -75,7 +75,7 @@ def generate_title(artwork_title):
 
 def update_artwork_worksheet(data):
     """
-    Updates artwork worksheet, adds new row with the data generated.
+    Updates artwork worksheet, adds new row with the data generated. Once done, it prints a message accordingly.
     """
     print("Updating artwork titles database...\n")
     
