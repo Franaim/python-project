@@ -77,7 +77,7 @@ def update_artwork_worksheet(data):
     """
     Updates artwork worksheet, adds new row with the data generated.
     """
-    print("Updating artwork worksheet...\n")
+    print("Updating artwork titles database...\n")
     
     artwork_worksheet = SHEET.worksheet("artwork")
     artwork_worksheet.append_row(data)
