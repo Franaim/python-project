@@ -109,7 +109,12 @@ def consult_artwork_titles():
     artwork_worksheet = SHEET.worksheet("artwork")
     data = artwork_worksheet.get_all_values()
 
-    
+    if not data:
+        print("No artwork titles found in the database.")
+    else:
+        print("Artwork titles in the database:")
+        for i, row in enumerate(data, start=1):
+            print(f"{i}. {row[0]}")
 
 
 # Calls the generate_title function
@@ -135,6 +140,7 @@ def main():
 
 
 print("Welcome to the artwork title generator\n")
+consult_artwork_titles()
 main()
 
 
