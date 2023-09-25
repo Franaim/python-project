@@ -190,8 +190,15 @@ def generate():
     # Turns the data into a list so it can be added to the worksheet
     artwork_data = [artwork_title]
 
-
     ask_to_save_artwork(artwork_data)
+
+    while True:
+            choice = input("1. Generate another title\n2. Go to Main Menu\nEnter your choice (1/2):\n")
+            if choice == '1':
+                break
+            elif choice == '2':
+                return
+
 
 def main():
     """
