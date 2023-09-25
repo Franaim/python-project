@@ -190,7 +190,7 @@ def generate():
                 update_artwork_worksheet(artwork_data)
                 break # Exits after saving
             elif ask_to_save == 'n':
-                print("Title not saved")
+                print("Title not saved\n")
                 break # Exits without saving
             else:
                 print("Invalid choice. Please enter 'y' or 'n'.")
