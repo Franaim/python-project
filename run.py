@@ -31,7 +31,7 @@ def get_integer_input():
     The while loop keeps requesting a number until a valid input is entered.
     It checks if the input is a valid number between 1 and 3 and prints an error if it's not.
     """
-    print("Please enter the number of words you'd like your artwork title to have.")
+    print("\nPlease enter the number of words you'd like your artwork title to have.")
     print("It should be a number between 1 and 3.\n")
     while True:
         user_input = input("Enter a number here:\n")
@@ -148,7 +148,7 @@ def main_menu():
         if choice == '1':
             database_menu()
         elif choice == '2':
-            generate_artwork()
+            generate()
         else:
             print("Invalid choice. Please enter '1' or '2'.")
 
@@ -156,11 +156,11 @@ def database_menu():
     """
     Menu for functions related to consulting the database
     """
-    print("\nArtwork Database Menu:\n")
+    print("\nArtwork Database Menu\n")
     print("1. Consult artwork titles in the database")
     print("2. Search for a word in the database")
 
-      while True:
+    while True:
         choice = input("Enter your choice (1/2):\n")
         if choice == '1':
             consult_artwork_database()
@@ -168,9 +168,6 @@ def database_menu():
             search_word_in_database(data)
         else:
             print("Invalid choice. Please enter '1' or '2'.")
-
-
-
 
 
 
@@ -202,12 +199,6 @@ def main():
     main_menu()
 
 
-
-
-while True:
-    if not search_word_in_database(data):
-        print("Exiting the word search.")
-        break
 main()
 
 
