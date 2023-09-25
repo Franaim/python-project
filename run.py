@@ -100,6 +100,17 @@ def update_artwork_worksheet(data):
 
     print("Artwork title saved successfully.\n")
 
+def consult_artwork_titles():
+    """
+    Gets and prints the list of artwork titles from the worksheet.
+    """
+    print("Consulting the database for artwork titles...\n")
+    
+    artwork_worksheet = SHEET.worksheet("artwork")
+    data = artwork_worksheet.get_all_values()
+
+    
+
 
 # Calls the generate_title function
 def main():
