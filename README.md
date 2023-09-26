@@ -10,16 +10,16 @@ It enables users to generate, manage, and consult titles for contemporary works 
 
 ## How to use it
 
-At the start of the program the user is given a brief description of what the program can do and must choose (by entering 1 or 2) whether they want to do:
+At the start of the program the user is given a brief description of what the program can do and must choose (by entering 1 or 2) whether they want to:
 
 1. Perform query tasks on a database.
 2. Generate data which can then be included in the database.
 
 ### Query tasks on database
 
-In case of entering 1, the user will again have to choose between three new options:
+In case of entering 1, the user will again have to choose between some options:
 
-1. View the list of data generated with the programme and saved in the database.
+1. View the list of data generated with the program and saved in the database.
 This option will use an API connected to the Pyhton program to get and print on the terminal an indexed list of all the artwork titles that other users have generated and saved in the external worksheet.
 
 2. Query the frequency of a particular word within this database.
@@ -39,7 +39,7 @@ Once the title has been generated, the user can choose whether to save it in the
 
 1. Title Generation:
 
-- Users can generate artwork titles of varying lengths (between 1 and 3 words) using a custom algorithm that combines words and phrases from predefined lists.
+- Users can generate artwork titles of varying lengths (between 1 and 3 words) using a custom algorithm that combines nouns and adjectives from predefined lists.
 - Generated titles are displayed to the user along with the word count.
 
 ![Artwork Title Generating](https://iili.io/JJUAZQ4.jpg)
@@ -115,9 +115,9 @@ The most critical aspect of the data model in the "Artwork Title Generator" proj
 
 I have manually tested this project in the following ways:
 
-- Utilizing PEP 8 Linter: I ran the PEP 8 linter on the codebase to ensure adherence to Python's style guidelines. No major issues were found.
+- Utilizing PEP8 Linter: I ran the PEP8 linter on the codebase to ensure adherence to Python's style guidelines. No major issues were found.
 
-- Testing Invalid Inputs: I conducted extensive testing by intentionally providing invalid inputs in various scenarios. Evaluated the program's responses to ensure robust error handling and user-friendly feedback.
+- Testing Invalid Inputs: I conducted extensive testing by intentionally providing invalid inputs in various scenarios and evaluated the program's responses to ensure robust error handling and user-friendly feedback.
 
 - Local Terminal Testing: I executed the program multiple times in the local development environment to verify its functionality and user experience. This helped identify and address any potential issues during development.
 
